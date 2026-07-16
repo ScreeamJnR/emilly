@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emilly, vamos tomar um café? ☕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f9d6e0 0%, #f8b4c8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .card {
+            background: rgba(255, 240, 245, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 56px;
+            padding: 2.8rem 2.5rem;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 25px 45px -12px rgba(180, 60, 90, 0.5);
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #7a2e44;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .emoji-big {
+            font-size: 4.8rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .question {
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: #3f1e2b;
+            margin: 1.2rem 0 2.2rem 0;
+            background: rgba(255, 220, 230, 0.5);
+            padding: 0.6rem 1rem;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            min-height: 120px;
+            padding: 10px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 80px;
+            padding: 0.9rem 2.8rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-yes {
+            background: #d43f6b;
+            color: white;
+            border: 2px solid #b32e56;
+            box-shadow: 0 8px 0 #882a4a;
+            transform: translateY(0);
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-yes:hover {
+            background: #c0355e;
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 10px 0 #882a4a;
+        }
+
+        .btn-yes:active {
+            transform: scale(0.96) translateY(4px);
+            box-shadow: 0 4px 0 #882a4a;
+        }
+
+        .btn-no {
+            background: #f0f0f0;
+            color: #2d1b22;
+            border: 2px solid #c0b0b6;
+            box-shadow: 0 8px 0 #a09096;
+            position: absolute;
+            z-index: 20;
+            transition: all 0.15s cubic-bezier(0.34, 1.4, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .btn-no:hover {
+            background: #e8e0e4;
+            box-shadow: 0 6px 0 #a09096;
+            transform: scale(0.95);
+        }
+
+        .celebration {
+            margin-top: 2rem;
+            font-size: 1.8rem;
+            background: rgba(255, 230, 240, 0.7);
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            border: 2px dashed #d43f6b;
+            color: #5f2537;
+            font-weight: 500;
+            display: none;
+            animation: pop 0.5s ease;
+        }
+
+        .celebration.show {
+            display: block;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.6s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.12); }
+            60% { transform: scale(1); }
+            80% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .loading {
+            display: none;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #7a2e44;
+        }
+        .loading.show {
+            display: block;
+        }
+
+        .erro-msg {
+            display: none;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #c0392b;
+            background: rgba(255, 200, 200, 0.5);
+            padding: 0.5rem;
+            border-radius: 20px;
+        }
+        .erro-msg.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 2rem 1.2rem; }
+            h1 { font-size: 2rem; }
+            .question { font-size: 1.5rem; }
+            .btn { font-size: 1.3rem; padding: 0.7rem 1.8rem; min-width: 100px; }
+            .btn-group { gap: 1.5rem; min-height: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="emoji-big">☕</div>
+    <h1>Emilly</h1>
+
+    <div class="question">
+        <span>💫 Vamos tomar um café hoje?</span>
+    </div>
+
+    <div class="btn-group" id="btnGroup">
+        <button class="btn btn-yes" id="btnSim">Sim 💕</button>
+        <button class="btn btn-no" id="btnNao">Não 😅</button>
+    </div>
+
+    <div class="celebration" id="celebrationMessage">
+        🎉 <strong>Te busco às 20h!</strong> 🎉
+    </div>
+    
+    <div class="loading" id="loadingMessage">📤 Enviando resposta...</div>
+    <div class="erro-msg" id="erroMessage">❌ Erro ao enviar. Mas não se preocupe, já registramos sua resposta!</div>
+</div>
+
+<script>
+    (function() {
+        const btnSim = document.getElementById('btnSim');
+        const btnNao = document.getElementById('btnNao');
+        const celebration = document.getElementById('celebrationMessage');
+        const loading = document.getElementById('loadingMessage');
+        const erro = document.getElementById('erroMessage');
+        const btnGroup = document.getElementById('btnGroup');
+
+        let isFleeActive = true;
+        let respostaEnviada = false;
+
+        // SEU ENDPOINT DO FORMSPREE ATUALIZADO
+        const FORMSPREE_URL = 'https://formspree.io/f/mvzezwok';
+
+        function enviarResposta(resposta) {
+            if (respostaEnviada) return;
+            respostaEnviada = true;
+
+            loading.classList.add('show');
+            erro.classList.remove('show');
+
+            fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome: 'Emilly',
+                    resposta: resposta,
+                    data_hora: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+                    user_agent: navigator.userAgent
+                })
+            })
+            .then(response => {
+                loading.classList.remove('show');
+                if (response.ok) {
+                    console.log('✅ Resposta enviada com sucesso!');
+                } else {
+                    console.error('❌ Erro ao enviar resposta');
+                    erro.classList.add('show');
+                }
+            })
+            .catch(error => {
+                loading.classList.remove('show');
+                console.error('❌ Erro de rede:', error);
+                erro.classList.add('show');
+            });
+        }
+
+        // Função para mover o botão "Não"
+        function moveNoButton() {
+            if (!isFleeActive) return;
+
+            const btnWidth = btnNao.offsetWidth;
+            const btnHeight = btnNao.offsetHeight;
+            const padding = 15;
+            const maxLeft = btnGroup.clientWidth - btnWidth - padding;
+            const maxTop = btnGroup.clientHeight - btnHeight - padding;
+
+            if (maxLeft < 20 || maxTop < 20) {
+                btnNao.style.left = '50%';
+                btnNao.style.top = '50%';
+                btnNao.style.transform = 'translate(-50%, -50%)';
+                return;
+            }
+
+            let randomLeft = Math.floor(Math.random() * (maxLeft - padding + 1)) + padding;
+            let randomTop = Math.floor(Math.random() * (maxTop - padding + 1)) + padding;
+
+            const simRect = btnSim.getBoundingClientRect();
+            const groupRect = btnGroup.getBoundingClientRect();
+            const simLeftRel = simRect.left - groupRect.left;
+            const simTopRel = simRect.top - groupRect.top;
+            const simWidth = btnSim.offsetWidth;
+            const simHeight = btnSim.offsetHeight;
+
+            let attempts = 0;
+            while (attempts < 30) {
+                const overlapX = (randomLeft < simLeftRel + simWidth + 15) && (randomLeft + btnWidth + 15 > simLeftRel);
+                const overlapY = (randomTop < simTopRel + simHeight + 15) && (randomTop + btnHeight + 15 > simTopRel);
+                if (overlapX && overlapY) {
+                    randomLeft = Math.floor(Math.random() * (maxLeft - padding + 1)) + padding;
+                    randomTop = Math.floor(Math.random() * (maxTop - padding + 1)) + padding;
+                    attempts++;
+                } else {
+                    break;
+                }
+            }
+
+            btnNao.style.position = 'absolute';
+            btnNao.style.left = randomLeft + 'px';
+            btnNao.style.top = randomTop + 'px';
+            btnNao.style.transform = 'none';
+        }
+
+        // Eventos do botão "Não"
+        btnNao.addEventListener('mouseenter', function(e) {
+            if (isFleeActive) {
+                e.preventDefault();
+                moveNoButton();
+            }
+        });
+
+        btnNao.addEventListener('mousedown', function(e) {
+            if (isFleeActive) {
+                e.preventDefault();
+                e.stopPropagation();
+                moveNoButton();
+                return false;
+            }
+        });
+
+        btnNao.addEventListener('click', function(e) {
+            if (isFleeActive) {
+                e.preventDefault();
+                e.stopPropagation();
+                moveNoButton();
+                return false;
+            }
+        });
+
+        btnNao.addEventListener('touchstart', function(e) {
+            if (isFleeActive) {
+                e.preventDefault();
+                e.stopPropagation();
+                moveNoButton();
+                return false;
+            }
+        });
+
+        // Quando clicar no SIM
+        btnSim.addEventListener('click', function() {
+            // Envia a resposta para o Formspree
+            enviarResposta('SIM! Vai tomar café comigo ☕');
+
+            // Desativa a fuga
+            isFleeActive = false;
+            
+            btnNao.style.position = 'relative';
+            btnNao.style.left = 'auto';
+            btnNao.style.top = 'auto';
+            btnNao.style.transform = 'none';
+            btnNao.style.marginLeft = 'auto';
+            btnNao.style.marginRight = 'auto';
+
+            celebration.classList.add('show');
+            btnNao.disabled = true;
+            btnNao.style.opacity = '0.5';
+            btnNao.style.cursor = 'default';
+            btnNao.innerText = '😘';
+
+            btnSim.classList.add('heartbeat');
+            btnSim.innerText = 'Sim 💖';
+            document.querySelector('.emoji-big').innerHTML = '🎉☕🎉';
+        });
+
+        // Inicialização
+        function inicializarPosicao() {
+            btnNao.style.position = 'relative';
+            btnNao.style.left = 'auto';
+            btnNao.style.top = 'auto';
+            btnNao.style.transform = 'none';
+            btnNao.style.marginLeft = 'auto';
+            btnNao.style.marginRight = 'auto';
+            
+            if (btnGroup.clientWidth < 200 || btnGroup.clientHeight < 80) {
+                isFleeActive = false;
+            }
+        }
+
+        window.addEventListener('load', function() {
+            inicializarPosicao();
+            setTimeout(() => {
+                if (btnGroup.clientWidth < 200 || btnGroup.clientHeight < 80) {
+                    isFleeActive = false;
+                }
+            }, 300);
+        });
+
+        window.addEventListener('resize', function() {
+            if (isFleeActive) {
+                if (btnGroup.clientWidth < 200 || btnGroup.clientHeight < 80) {
+                    isFleeActive = false;
+                    inicializarPosicao();
+                }
+            }
+        });
+
+        setInterval(() => {
+            if (isFleeActive) {
+                const rect = btnNao.getBoundingClientRect();
+                const groupRect = btnGroup.getBoundingClientRect();
+                if (rect.left < groupRect.left || rect.right > groupRect.right ||
+                    rect.top < groupRect.top || rect.bottom > groupRect.bottom) {
+                    moveNoButton();
+                }
+            }
+        }, 1000);
+
+        setTimeout(inicializarPosicao, 100);
+    })();
+</script>
+
+</body>
+</html>
