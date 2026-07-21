@@ -76,7 +76,52 @@
             opacity: 0.6;
         }
 
-        /* ===== PLAYLIST SPOTIFY (link) ===== */
+        /* ===== CITAÇÃO ===== */
+        .citacao {
+            margin: 0.8rem 0 1.8rem 0;
+            font-size: 1.15rem;
+            color: #4a2a33;
+            font-style: italic;
+            line-height: 1.7;
+            letter-spacing: 0.2px;
+            opacity: 0.85;
+            position: relative;
+            padding: 0 0.5rem;
+        }
+        .citacao::before {
+            content: '“';
+            font-size: 2.6rem;
+            color: #d43f6b;
+            opacity: 0.2;
+            position: absolute;
+            top: -12px;
+            left: -4px;
+            font-style: normal;
+        }
+        .citacao::after {
+            content: '”';
+            font-size: 2.6rem;
+            color: #d43f6b;
+            opacity: 0.2;
+            position: absolute;
+            bottom: -20px;
+            right: -4px;
+            font-style: normal;
+        }
+        .citacao .autor {
+            display: block;
+            margin-top: 0.4rem;
+            font-size: 0.85rem;
+            color: #a14b62;
+            font-style: normal;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .citacao .autor::before {
+            content: '— ';
+        }
+
+        /* ===== PLAYLIST SPOTIFY ===== */
         .playlist-box {
             background: rgba(248, 187, 208, 0.15);
             border-radius: 40px;
@@ -430,69 +475,17 @@
             opacity: 1;
         }
 
-        /* ===== CITAÇÃO ===== */
-        .citacao {
-            margin-top: 2.8rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(212, 63, 107, 0.08);
-            font-size: 1.1rem;
-            color: #4a2a33;
-            font-style: italic;
-            line-height: 1.7;
-            letter-spacing: 0.2px;
-            opacity: 0.85;
-            position: relative;
-        }
-        .citacao::before {
-            content: '“';
-            font-size: 2.8rem;
-            color: #d43f6b;
-            opacity: 0.25;
-            position: absolute;
-            top: -10px;
-            left: 0;
-            font-style: normal;
-        }
-        .citacao::after {
-            content: '”';
-            font-size: 2.8rem;
-            color: #d43f6b;
-            opacity: 0.25;
-            position: absolute;
-            bottom: -20px;
-            right: 0;
-            font-style: normal;
-        }
-        .citacao .autor {
-            display: block;
-            margin-top: 0.6rem;
-            font-size: 0.85rem;
-            color: #a14b62;
-            font-style: normal;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        .citacao .autor::before {
-            content: '— ';
-        }
-
         /* ===== RESPONSIVO ===== */
         @media (max-width: 480px) {
             .container { padding: 1.8rem 1.2rem; border-radius: 40px; }
             .titulo { font-size: 1.9rem; }
+            .citacao { font-size: 0.95rem; margin: 0.4rem 0 1.4rem 0; }
+            .citacao::before, .citacao::after { font-size: 2rem; }
             .btn-explode { font-size: 1.1rem; padding: 0.9rem 2rem; }
             .spotify-link { padding: 0.7rem 1.6rem; font-size: 0.95rem; }
             .spotify-link .icon { font-size: 1.4rem; }
             .filmes-grid { grid-template-columns: 1fr; }
             .btn-filme { padding: 0.7rem; }
-            .citacao {
-                font-size: 0.95rem;
-                padding-top: 1.5rem;
-                margin-top: 2rem;
-            }
-            .citacao::before, .citacao::after {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
@@ -503,7 +496,13 @@
     <!-- TÍTULO -->
     <div class="titulo">💕 Para você, <span>Emilly</span></div>
 
-    <!-- PLAYLIST SPOTIFY (link) -->
+    <!-- CITAÇÃO -->
+    <div class="citacao">
+        Se tu vens, por exemplo, às quatro da tarde, desde as três eu começarei a ser feliz
+        <span class="autor">Antoine de Saint-Exupéry, O Pequeno Príncipe</span>
+    </div>
+
+    <!-- PLAYLIST SPOTIFY -->
     <div class="playlist-box">
         <h3>🎵 <span>❤️</span> Playlist feita especialmente para você</h3>
         <a class="spotify-link" href="https://open.spotify.com/playlist/5LX60QxPxVCd6Fw0lKfwPl?si=e07998eae49a468c" target="_blank">
@@ -521,7 +520,7 @@
             💖 Toque aqui
         </button>
         <div class="mensagem-explosao" id="mensagemExplosao">
-            "É assim que me sinto perto de você... 💕"
+            "É assim que me sinto perto de você..."
         </div>
     </div>
 
@@ -562,12 +561,6 @@
         <div class="loading-filme" id="loadingFilme">📤 Enviando sua escolha...</div>
         <div class="erro-filme" id="erroFilme">❌ Erro ao enviar. Mas não se preocupe, já registrei sua escolha!</div>
         <div class="confirmacao-filme" id="confirmacaoFilme">✅ Filme escolhido com sucesso! Já estou sabendo 📩</div>
-    </div>
-
-    <!-- CITAÇÃO -->
-    <div class="citacao">
-        Se tu vens, por exemplo, às quatro da tarde, desde as três eu começarei a ser feliz
-        <span class="autor">Antoine de Saint-Exupéry, O Pequeno Príncipe</span>
     </div>
 
 </div>
