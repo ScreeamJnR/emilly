@@ -236,6 +236,7 @@
             border-radius: 60px;
             display: inline-block;
             margin-top: 0.5rem;
+            min-width: 120px;
         }
 
         .pedido-tela {
@@ -349,7 +350,7 @@
         <div class="espera-titulo">Você disse sim! 🎉</div>
         <div class="espera-texto">
             Até às <strong>19:30h</strong> meu bem<br><br>
-            Aguarde até às <strong>00:37</strong> e abra novamente a página
+            Aguarde até às <strong>20:00</strong> e abra novamente a página
         </div>
         <div class="contador" id="contador">--:--</div>
     </div>
@@ -408,37 +409,51 @@
     });
 
     // ============================================
-    // CONTADOR E LIBERAÇÃO (00:37 para teste)
+    // CONTADOR E LIBERAÇÃO (20:00)
     // ============================================
     function iniciarContador() {
-        const agora = new Date();
-        let horaAlvo = 0;
-        let minAlvo = 37;
+        const horaAlvo = 20;
+        const minAlvo = 0;
 
-        if (agora.getHours() > horaAlvo || (agora.getHours() === horaAlvo && agora.getMinutes() >= minAlvo)) {
+        // Função para verificar se já passou do horário
+        function verificarLiberacao() {
+            const agora = new Date();
+            const minutosAtual = agora.getHours() * 60 + agora.getMinutes();
+            const minutosAlvo = horaAlvo * 60 + minAlvo;
+
+            return minutosAtual >= minutosAlvo;
+        }
+
+        // Se já passou das 20:00, libera imediatamente
+        if (verificarLiberacao()) {
             liberarPedido();
             return;
         }
 
+        // Atualiza o contador a cada segundo
         const interval = setInterval(() => {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
+            const agora = new Date();
+            const horas = agora.getHours();
+            const minutos = agora.getMinutes();
+            const segundos = agora.getSeconds();
 
-            let diffMinutes = (horaAlvo * 60 + minAlvo) - (hours * 60 + minutes);
-            if (diffMinutes <= 0 && seconds >= 0) {
+            // Calcula a diferença total em segundos até o alvo
+            const minutosAtual = horas * 60 + minutos;
+            const minutosAlvo = horaAlvo * 60 + minAlvo;
+            let diffSegundos = (minutosAlvo - minutosAtual) * 60 - segundos;
+
+            // Se a diferença for <= 0, libera o pedido
+            if (diffSegundos <= 0) {
                 clearInterval(interval);
                 liberarPedido();
                 return;
             }
 
-            let minutosRest = Math.floor(diffMinutes);
-            let segundosRest = 60 - seconds;
-            if (segundosRest === 60) { segundosRest = 0; minutosRest--; }
-            if (minutosRest < 0) { minutosRest = 0; segundosRest = 0; }
+            // Formata minutos e segundos restantes
+            const minsRest = Math.floor(diffSegundos / 60);
+            const segsRest = diffSegundos % 60;
 
-            contador.textContent = `${String(minutosRest).padStart(2, '0')}:${String(segundosRest).padStart(2, '0')}`;
+            contador.textContent = `${String(minsRest).padStart(2, '0')}:${String(segsRest).padStart(2, '0')}`;
         }, 1000);
     }
 
