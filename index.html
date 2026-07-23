@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💖 Para Emilly com carinho</title>
+    <title>💖 Convite Especial</title>
     <style>
         * {
             margin: 0;
@@ -17,14 +17,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
             padding: 1.5rem;
         }
 
         .container {
-            max-width: 620px;
+            max-width: 600px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 56px;
@@ -33,7 +33,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
         }
 
         .container::before {
@@ -57,6 +57,20 @@
             opacity: 0.6;
         }
 
+        .tela {
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .tela.hide {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            padding: 2.8rem 2.2rem;
+        }
+
         .titulo {
             font-size: 2.4rem;
             font-weight: 700;
@@ -76,154 +90,197 @@
             opacity: 0.6;
         }
 
-        /* ===== CITAÇÃO (no topo) ===== */
-        .citacao {
-            margin: 0.8rem 0 1.8rem 0;
-            font-size: 1.15rem;
-            color: #4a2a33;
-            font-style: italic;
-            line-height: 1.7;
-            letter-spacing: 0.2px;
-            opacity: 0.85;
-            position: relative;
-            padding: 0 0.5rem;
-        }
-        .citacao::before {
-            content: '“';
-            font-size: 2.6rem;
-            color: #d43f6b;
-            opacity: 0.2;
-            position: absolute;
-            top: -12px;
-            left: -4px;
-            font-style: normal;
-        }
-        .citacao::after {
-            content: '”';
-            font-size: 2.6rem;
-            color: #d43f6b;
-            opacity: 0.2;
-            position: absolute;
-            bottom: -20px;
-            right: -4px;
-            font-style: normal;
-        }
-        .citacao .autor {
-            display: block;
-            margin-top: 0.4rem;
-            font-size: 0.85rem;
+        .subtitulo-convite {
+            font-size: 1.1rem;
             color: #a14b62;
-            font-style: normal;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        .citacao .autor::before {
-            content: '— ';
+            margin: 0.5rem 0 1.5rem 0;
+            font-weight: 400;
+            line-height: 1.5;
         }
 
-        /* ===== PLAYLIST SPOTIFY ===== */
-        .playlist-box {
+        .detalhes-convite {
             background: rgba(248, 187, 208, 0.15);
-            border-radius: 40px;
-            padding: 1.6rem 1.8rem;
+            border-radius: 32px;
+            padding: 1.5rem 1.8rem;
             margin-bottom: 2rem;
             border: 1px solid rgba(212, 63, 107, 0.12);
-            transition: 0.3s;
-            position: relative;
         }
-        .playlist-box:hover {
-            border-color: rgba(212, 63, 107, 0.25);
-            box-shadow: 0 8px 30px rgba(212, 63, 107, 0.06);
-        }
-        .playlist-box h3 {
-            color: #1a1a1a;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
-            letter-spacing: -0.2px;
-        }
-        .playlist-box h3 span {
-            display: inline-block;
-            animation: pulse-heart 1.8s infinite;
-        }
-        @keyframes pulse-heart {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        .spotify-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: #1DB954;
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 60px;
+        .detalhes-convite p {
             font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 6px 0 #1a7a3a, 0 8px 25px rgba(29, 185, 84, 0.25);
-            letter-spacing: 0.3px;
-            margin-top: 0.2rem;
-        }
-        .spotify-link:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 0 #1a7a3a, 0 12px 35px rgba(29, 185, 84, 0.35);
-        }
-        .spotify-link:active {
-            transform: translateY(4px) scale(0.97);
-            box-shadow: 0 2px 0 #1a7a3a;
-        }
-        .spotify-link .icon {
-            font-size: 1.8rem;
-            line-height: 1;
-        }
-        .spotify-link .text {
+            color: #1a1a1a;
+            margin: 0.4rem 0;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            line-height: 1.2;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
         }
-        .spotify-link .text small {
-            font-weight: 400;
-            font-size: 0.7rem;
-            opacity: 0.85;
-            letter-spacing: 0.5px;
+        .detalhes-convite .emoji-detalhe {
+            font-size: 1.6rem;
+        }
+        .detalhes-convite .hora {
+            font-weight: 700;
+            color: #d43f6b;
+            font-size: 1.3rem;
         }
 
-        /* ===== CORAÇÃO EXPLODE ===== */
-        .heart-explode-area {
-            margin-bottom: 2rem;
-            position: relative;
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
         }
-        .btn-explode {
-            background: #1a1a1a;
-            color: white;
+
+        .btn {
             border: none;
-            border-radius: 80px;
-            padding: 1.1rem 3rem;
+            border-radius: 60px;
+            padding: 1rem 2.8rem;
             font-size: 1.3rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 8px 0 #333, 0 10px 30px rgba(0,0,0,0.08);
-            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            min-width: 140px;
+            letter-spacing: 0.3px;
             position: relative;
-            z-index: 5;
-            letter-spacing: 0.2px;
         }
-        .btn-explode:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 0 #333, 0 16px 40px rgba(0,0,0,0.12);
-        }
-        .btn-explode:active {
-            transform: translateY(4px);
-            box-shadow: 0 4px 0 #333;
-        }
-        .btn-explode.explodiu {
+        .btn-sim {
             background: #d43f6b;
-            box-shadow: 0 8px 0 #882a4a, 0 10px 30px rgba(212, 63, 107, 0.3);
+            color: white;
+            border: 2px solid #b32e56;
+            box-shadow: 0 8px 0 #882a4a, 0 6px 20px rgba(212, 63, 107, 0.25);
+            transform: translateY(0);
+        }
+        .btn-sim:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 0 #882a4a, 0 10px 30px rgba(212, 63, 107, 0.35);
+        }
+        .btn-sim:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #882a4a;
+        }
+        .btn-sim:disabled {
+            opacity: 0.6;
+            transform: none !important;
+            box-shadow: 0 4px 0 #882a4a;
+            cursor: default;
+        }
+
+        .btn-nao {
+            background: #f0f0f0;
+            color: #1a1a1a;
+            border: 2px solid #c0b0b6;
+            box-shadow: 0 8px 0 #a09096;
+            transition: all 0.15s ease;
+        }
+        .btn-nao:hover {
+            background: #e8e0e4;
+            box-shadow: 0 6px 0 #a09096;
+            transform: translateY(2px);
+        }
+        .btn-nao:active {
+            transform: scale(0.95) translateY(6px);
+            box-shadow: 0 2px 0 #a09096;
+        }
+        .btn-nao:disabled {
+            opacity: 0.5;
+            transform: none !important;
+            box-shadow: 0 4px 0 #a09096;
+            cursor: default;
+        }
+
+        .msg-nao {
+            margin-top: 1.2rem;
+            font-size: 1.1rem;
+            color: #a14b62;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .msg-nao.show {
+            opacity: 1;
+        }
+
+        .tela-espera {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+            display: none;
+        }
+        .tela-espera.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            display: block;
+        }
+        .tela-espera .espera-titulo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+        }
+        .tela-espera .espera-texto {
+            font-size: 1.1rem;
+            color: #4a2a33;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+        .tela-espera .contador {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #d43f6b;
+            background: rgba(212, 63, 107, 0.08);
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .pedido-tela {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+            display: none;
+        }
+        .pedido-tela.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            display: block;
+        }
+
+        .pedido-tela .titulo-pedido {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+        }
+
+        .pedido-tela .texto-pedido {
+            font-size: 1.15rem;
+            color: #4a2a33;
+            line-height: 1.9;
+            margin: 1.2rem 0;
+            padding: 0 0.5rem;
+            text-align: left;
+        }
+
+        .pedido-tela .texto-pedido .destaque {
+            color: #d43f6b;
+            font-weight: 600;
+        }
+
+        .coracoes-animados {
+            font-size: 2.8rem;
+            margin: 0.5rem 0;
+            animation: pulse-heart 1.5s infinite;
+        }
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         .heart-rain {
@@ -247,320 +304,65 @@
             100% { transform: translateY(110vh) rotate(720deg) scale(1.6); opacity: 0; }
         }
 
-        .mensagem-explosao {
-            margin-top: 1.2rem;
-            font-size: 1.2rem;
-            color: #1a1a1a;
-            font-weight: 500;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            min-height: 2.8rem;
-            letter-spacing: -0.2px;
-        }
-        .mensagem-explosao.show {
-            opacity: 1;
-        }
-
-        /* ===== MOTIVOS ===== */
-        .motivos-box {
-            margin-bottom: 2rem;
-        }
-        .motivos-box h3 {
-            color: #1a1a1a;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: -0.2px;
-        }
-        .motivos-lista {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.7rem;
-        }
         @media (max-width: 480px) {
-            .motivos-lista {
-                grid-template-columns: 1fr;
-            }
-        }
-        .motivo-item {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(4px);
-            padding: 0.7rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            color: #1a1a1a;
-            border: 1px solid rgba(212, 63, 107, 0.08);
-            opacity: 0;
-            transform: scale(0.85) translateY(8px);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: default;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
-        }
-        .motivo-item.show {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-        .motivo-item .num {
-            background: #1a1a1a;
-            color: white;
-            border-radius: 50%;
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .btn-revelar-motivos {
-            background: #1a1a1a;
-            color: white;
-            border: none;
-            border-radius: 60px;
-            padding: 0.8rem 2.4rem;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            margin-top: 1rem;
-            box-shadow: 0 4px 0 #333;
-            transform: translateY(0);
-            letter-spacing: 0.2px;
-        }
-        .btn-revelar-motivos:hover {
-            background: #d43f6b;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #882a4a;
-        }
-        .btn-revelar-motivos:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #882a4a;
-        }
-        .btn-revelar-motivos:disabled {
-            opacity: 0.5;
-            cursor: default;
-            transform: none !important;
-            box-shadow: 0 4px 0 #333;
-            background: #1a1a1a;
-        }
-
-        /* ===== FILMES ===== */
-        .filmes-box {
-            margin-top: 1.8rem;
-            padding-top: 1.8rem;
-            border-top: 2px solid rgba(212, 63, 107, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .filmes-box.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .filmes-box h3 {
-            color: #1a1a1a;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1.4rem;
-            letter-spacing: -0.3px;
-        }
-        .filmes-box h3::after {
-            content: ' 🎬';
-            display: inline-block;
-            animation: pulse-film 2s infinite;
-        }
-        @keyframes pulse-film {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .filmes-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.9rem;
-        }
-        @media (max-width: 480px) {
-            .filmes-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .btn-filme {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(4px);
-            border: 2px solid rgba(212, 63, 107, 0.15);
-            border-radius: 30px;
-            padding: 0.9rem 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.02);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-        }
-        .btn-filme:hover {
-            background: #d43f6b;
-            color: white;
-            transform: scale(1.03) translateY(-3px);
-            border-color: #b32e56;
-            box-shadow: 0 8px 30px rgba(212, 63, 107, 0.25);
-        }
-        .btn-filme:active {
-            transform: scale(0.96) translateY(2px);
-        }
-        .btn-filme.selecionado {
-            background: #d43f6b;
-            color: white;
-            border-color: #b32e56;
-            box-shadow: 0 6px 30px rgba(212, 63, 107, 0.35);
-            transform: scale(1.02);
-        }
-        .btn-filme .emoji-filme {
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-        .btn-filme:disabled {
-            opacity: 0.45;
-            cursor: default;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        .loading-filme {
-            display: none;
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            color: #7a2e44;
-            font-weight: 500;
-        }
-        .loading-filme.show {
-            display: block;
-        }
-
-        .erro-filme {
-            display: none;
-            margin-top: 0.8rem;
-            font-size: 0.9rem;
-            color: #c0392b;
-            background: rgba(255, 200, 200, 0.4);
-            padding: 0.6rem;
-            border-radius: 30px;
-            backdrop-filter: blur(4px);
-        }
-        .erro-filme.show {
-            display: block;
-        }
-
-        .confirmacao-filme {
-            margin-top: 1.2rem;
-            font-size: 1.1rem;
-            color: #27ae60;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            background: rgba(39, 174, 96, 0.08);
-            padding: 0.6rem 1rem;
-            border-radius: 40px;
-        }
-        .confirmacao-filme.show {
-            opacity: 1;
-        }
-
-        /* ===== RESPONSIVO ===== */
-        @media (max-width: 480px) {
-            .container { padding: 1.8rem 1.2rem; border-radius: 40px; }
+            .container { padding: 2rem 1.2rem; }
             .titulo { font-size: 1.9rem; }
-            .citacao { font-size: 0.95rem; margin: 0.4rem 0 1.4rem 0; }
-            .citacao::before, .citacao::after { font-size: 2rem; }
-            .btn-explode { font-size: 1.1rem; padding: 0.9rem 2rem; }
-            .spotify-link { padding: 0.7rem 1.6rem; font-size: 0.95rem; }
-            .spotify-link .icon { font-size: 1.4rem; }
-            .filmes-grid { grid-template-columns: 1fr; }
-            .btn-filme { padding: 0.7rem; }
+            .btn { font-size: 1.1rem; padding: 0.8rem 1.8rem; min-width: 110px; }
+            .detalhes-convite p { font-size: 1rem; }
+            .tela-espera .espera-titulo { font-size: 1.5rem; }
+            .pedido-tela .titulo-pedido { font-size: 1.8rem; }
+            .pedido-tela .texto-pedido { font-size: 1rem; }
+            .tela-espera .contador { font-size: 1.8rem; padding: 0.6rem 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="containerPrincipal">
 
-    <!-- TÍTULO -->
-    <div class="titulo">💕 Para você, <span>Emilly</span></div>
+    <!-- ===== TELA 1: CONVITE ===== -->
+    <div class="tela" id="conviteTela">
+        <div class="titulo">💕 Para você, <span>Emilly</span></div>
+        <div class="subtitulo-convite">Sei que já nos vimos ontem, porém gostaria de fazer um convite, espero de verdade que aceite</div>
 
-    <!-- CITAÇÃO DO PEQUENO PRÍNCIPE (topo) -->
-    <div class="citacao">
-        Se tu vens, por exemplo, às quatro da tarde, desde as três eu começarei a ser feliz
-        <span class="autor">Antoine de Saint-Exupéry, O Pequeno Príncipe</span>
-    </div>
-
-    <!-- PLAYLIST SPOTIFY -->
-    <div class="playlist-box">
-        <h3>🎵 <span>❤️</span> Playlist feita especialmente para você</h3>
-        <a class="spotify-link" href="https://open.spotify.com/playlist/5LX60QxPxVCd6Fw0lKfwPl?si=e07998eae49a468c" target="_blank">
-            <span class="icon">🎧</span>
-            <span class="text">
-                Ouvir no Spotify
-                <small>clique e descubra</small>
-            </span>
-        </a>
-    </div>
-
-    <!-- CORAÇÃO QUE EXPLODE -->
-    <div class="heart-explode-area">
-        <button class="btn-explode" id="btnExplode" onclick="explodirCoracoes()">
-            💖 Toque aqui
-        </button>
-        <div class="mensagem-explosao" id="mensagemExplosao">
-            "É assim que me sinto perto de você..."
-        </div>
-    </div>
-
-    <!-- 5 MOTIVOS -->
-    <div class="motivos-box">
-        <h3>💭 5 motivos até agora por eu gostar de você até agora e contando...</h3>
-        <div class="motivos-lista" id="motivosLista"></div>
-        <button class="btn-revelar-motivos" id="btnRevelar" onclick="revelarMotivos()">
-            🔓 Revelar motivos
-        </button>
-    </div>
-
-    <!-- SELEÇÃO DE FILMES -->
-    <div class="filmes-box" id="filmesBox">
-        <h3>Que filme deseja assistir hoje?</h3>
-
-        <div class="filmes-grid" id="filmesGrid">
-            <button class="btn-filme" data-filme="Nosferatu" onclick="escolherFilme(this)">
-                <span class="emoji-filme">🧛</span> Nosferatu
-            </button>
-            <button class="btn-filme" data-filme="Lobisomem" onclick="escolherFilme(this)">
-                <span class="emoji-filme">🐺</span> Lobisomem
-            </button>
-            <button class="btn-filme" data-filme="O Macaco" onclick="escolherFilme(this)">
-                <span class="emoji-filme">🐒</span> O Macaco
-            </button>
-            <button class="btn-filme" data-filme="Presença" onclick="escolherFilme(this)">
-                <span class="emoji-filme">👻</span> Presença
-            </button>
-            <button class="btn-filme" data-filme="A Mulher no Jardim" onclick="escolherFilme(this)">
-                <span class="emoji-filme">🌹</span> A Mulher no Jardim
-            </button>
-            <button class="btn-filme" data-filme="Deixa que eu escolho" onclick="escolherFilme(this)">
-                <span class="emoji-filme">🤔</span> Deixa que eu escolho
-            </button>
+        <div class="detalhes-convite">
+            <p><span class="emoji-detalhe">📅</span> Hoje</p>
+            <p><span class="emoji-detalhe">⏰</span> <span class="hora">19:30</span></p>
+            <p><span class="emoji-detalhe">📍</span> Indefinido</p>
         </div>
 
-        <div class="loading-filme" id="loadingFilme">📤 Enviando sua escolha...</div>
-        <div class="erro-filme" id="erroFilme">❌ Erro ao enviar. Mas não se preocupe, já registrei sua escolha!</div>
-        <div class="confirmacao-filme" id="confirmacaoFilme">✅ Filme escolhido com sucesso! Já estou sabendo 📩</div>
+        <div style="font-size:1.1rem; color:#4a2a33; margin-bottom:1.2rem;">
+            💭 <em>O que você me diz?</em>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-sim" id="btnSim">Sim, vou! 💕</button>
+            <button class="btn btn-nao" id="btnNao">Não 😅</button>
+        </div>
+
+        <div class="msg-nao" id="msgNao">Tudo bem, deixamos para outro dia</div>
+    </div>
+
+    <!-- ===== TELA 2: ESPERA ===== -->
+    <div class="tela-espera" id="telaEspera">
+        <div class="coracoes-animados" style="font-size:2.2rem;">⏳</div>
+        <div class="espera-titulo">Você disse sim! 🎉</div>
+        <div class="espera-texto">
+            Até às <strong>19:30h</strong> meu bem<br><br>
+            Aguarde até às <strong>00:37</strong> e abra novamente a página
+        </div>
+        <div class="contador" id="contador">--:--</div>
+    </div>
+
+    <!-- ===== TELA 3: PEDIDO ===== -->
+    <div class="pedido-tela" id="pedidoTela">
+        <div class="coracoes-animados">💖💕💖</div>
+        <div class="titulo-pedido">Emilly,</div>
+        <div class="texto-pedido">
+            Desde que a gente começou a sair, fui gostando cada vez mais de você. Cada encontro me deu mais certeza do que sinto e do que quero. Hoje eu sei que quero você ao meu lado. Gosto do seu jeito, da nossa conexão e de tudo o que estamos vivendo juntos.<br><br>
+            Eu sei que a gente se conhece há pouco tempo, mas, como já te falei, eu tenho certeza do que eu quero. Eu queria fazer esse pedido de um jeito diferente. Por isso insisti tanto para a gente ir à pousada, porque queria que esse momento fosse inesquecível. Mas percebi que não é o lugar que torna um momento especial, e sim a pessoa que está com a gente. Então, eu só quero te fazer uma pergunta...
+        </div>
+        <!-- A pergunta final será feita pessoalmente -->
     </div>
 
 </div>
@@ -570,134 +372,108 @@
 
 <script>
     // ============================================
-    // 1. CORAÇÕES QUE EXPLODEM
+    // ELEMENTOS
     // ============================================
-    let coracoesExplodidos = false;
+    const conviteTela = document.getElementById('conviteTela');
+    const telaEspera = document.getElementById('telaEspera');
+    const pedidoTela = document.getElementById('pedidoTela');
+    const btnSim = document.getElementById('btnSim');
+    const btnNao = document.getElementById('btnNao');
+    const msgNao = document.getElementById('msgNao');
+    const contador = document.getElementById('contador');
 
-    function explodirCoracoes() {
-        if (coracoesExplodidos) return;
-        coracoesExplodidos = true;
+    let simClicado = false;
+    let pedidoLiberado = false;
 
+    // ============================================
+    // LÓGICA DO BOTÃO "NÃO"
+    // ============================================
+    btnNao.addEventListener('click', function() {
+        msgNao.classList.add('show');
+        btnNao.disabled = true;
+        btnSim.disabled = true;
+    });
+
+    // ============================================
+    // LÓGICA DO BOTÃO "SIM"
+    // ============================================
+    btnSim.addEventListener('click', function() {
+        if (btnSim.disabled) return;
+        simClicado = true;
+
+        conviteTela.classList.add('hide');
+        telaEspera.classList.add('show');
+
+        iniciarContador();
+    });
+
+    // ============================================
+    // CONTADOR E LIBERAÇÃO (00:37 para teste)
+    // ============================================
+    function iniciarContador() {
+        const agora = new Date();
+        let horaAlvo = 0;
+        let minAlvo = 37;
+
+        if (agora.getHours() > horaAlvo || (agora.getHours() === horaAlvo && agora.getMinutes() >= minAlvo)) {
+            liberarPedido();
+            return;
+        }
+
+        const interval = setInterval(() => {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            let diffMinutes = (horaAlvo * 60 + minAlvo) - (hours * 60 + minutes);
+            if (diffMinutes <= 0 && seconds >= 0) {
+                clearInterval(interval);
+                liberarPedido();
+                return;
+            }
+
+            let minutosRest = Math.floor(diffMinutes);
+            let segundosRest = 60 - seconds;
+            if (segundosRest === 60) { segundosRest = 0; minutosRest--; }
+            if (minutosRest < 0) { minutosRest = 0; segundosRest = 0; }
+
+            contador.textContent = `${String(minutosRest).padStart(2, '0')}:${String(segundosRest).padStart(2, '0')}`;
+        }, 1000);
+    }
+
+    function liberarPedido() {
+        if (pedidoLiberado) return;
+        pedidoLiberado = true;
+
+        telaEspera.classList.remove('show');
+        telaEspera.classList.add('hide');
+
+        pedidoTela.classList.add('show');
+        explodirCoracoes(60);
+    }
+
+    // ============================================
+    // EXPLOSÃO DE CORAÇÕES
+    // ============================================
+    function explodirCoracoes(quantidade = 80) {
         const container = document.getElementById('heartRain');
-        const emojis = ['❤️', '💖', '💕', '💗', '💓', '♥️', '💝', '✨'];
+        const emojis = ['❤️', '💖', '💕', '💗', '💓', '♥️', '💝', '✨', '💘', '💞'];
 
-        for (let i = 0; i < 80; i++) {
+        for (let i = 0; i < quantidade; i++) {
             const span = document.createElement('span');
             span.className = 'heart-particle';
             span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             span.style.left = Math.random() * 100 + '%';
-            span.style.fontSize = (1.2 + Math.random() * 2.2) + 'rem';
-            span.style.animationDuration = (2.2 + Math.random() * 2) + 's';
-            span.style.animationDelay = Math.random() * 1.4 + 's';
+            span.style.fontSize = (1.2 + Math.random() * 2.5) + 'rem';
+            span.style.animationDuration = (2.2 + Math.random() * 2.5) + 's';
+            span.style.animationDelay = Math.random() * 1.8 + 's';
             container.appendChild(span);
 
             setTimeout(() => {
                 span.remove();
-            }, 5000);
+            }, 5500);
         }
-
-        const btn = document.getElementById('btnExplode');
-        btn.textContent = '💖 Já explodiu!';
-        btn.classList.add('explodiu');
-
-        const msg = document.getElementById('mensagemExplosao');
-        msg.classList.add('show');
-    }
-
-    // ============================================
-    // 2. 5 MOTIVOS
-    // ============================================
-    const motivos = [
-        "Amo teu sorriso",
-        "Amo o teu olhar",
-        "Amo te beijar",
-        "Amo tua risada",
-        "Amo conversar com você"
-    ];
-
-    let motivosRevelados = false;
-
-    function revelarMotivos() {
-        if (motivosRevelados) return;
-        motivosRevelados = true;
-
-        const lista = document.getElementById('motivosLista');
-        const btn = document.getElementById('btnRevelar');
-
-        motivos.forEach((motivo, index) => {
-            const div = document.createElement('div');
-            div.className = 'motivo-item';
-            div.innerHTML = `<span class="num">${index + 1}</span> ${motivo}`;
-            lista.appendChild(div);
-
-            setTimeout(() => {
-                div.classList.add('show');
-            }, index * 380 + 200);
-        });
-
-        btn.textContent = '✅ Motivos revelados!';
-        btn.disabled = true;
-
-        const totalDelay = motivos.length * 380 + 1000;
-        setTimeout(() => {
-            document.getElementById('filmesBox').classList.add('show');
-            document.getElementById('filmesBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, totalDelay);
-    }
-
-    // ============================================
-    // 3. SELEÇÃO DE FILMES com Formspree
-    // ============================================
-    const FORMSPREE_URL = 'https://formspree.io/f/mvzezwok';
-
-    let filmeSelecionado = false;
-
-    function escolherFilme(botao) {
-        if (filmeSelecionado) return;
-        filmeSelecionado = true;
-
-        const filme = botao.dataset.filme;
-        const loading = document.getElementById('loadingFilme');
-        const erro = document.getElementById('erroFilme');
-        const confirmacao = document.getElementById('confirmacaoFilme');
-        const todosBotoes = document.querySelectorAll('.btn-filme');
-
-        todosBotoes.forEach(b => b.disabled = true);
-        botao.classList.add('selecionado');
-
-        loading.classList.add('show');
-        erro.classList.remove('show');
-        confirmacao.classList.remove('show');
-
-        fetch(FORMSPREE_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                nome: 'Emilly',
-                filme_escolhido: filme,
-                data_hora: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
-            })
-        })
-        .then(response => {
-            loading.classList.remove('show');
-            if (response.ok) {
-                console.log('✅ Filme enviado com sucesso!');
-                confirmacao.classList.add('show');
-            } else {
-                console.error('❌ Erro ao enviar filme');
-                erro.classList.add('show');
-                confirmacao.classList.add('show');
-            }
-        })
-        .catch(error => {
-            loading.classList.remove('show');
-            console.error('❌ Erro de rede:', error);
-            erro.classList.add('show');
-            confirmacao.classList.add('show');
-        });
     }
 </script>
 
